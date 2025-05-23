@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System;
 public class UiManager : MonoBehaviour
 {
+    //有bug，我不知道怎么修
+
     [DllImport("user32.dll")]
     public static extern int MessageBox(IntPtr hWnd,string lpText,string lpCaption,uint uType);
 
