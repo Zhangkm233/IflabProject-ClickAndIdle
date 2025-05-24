@@ -3,25 +3,86 @@ using System.Collections;
 public class CannonController : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public float bulletSpeed = 10f;
+    public float bulletSpeed = 15f;//弹速
     //firepoint可以实现炮管之类的东西
     public Transform firePoint;
     public bool isAutoFire = false; //是否自动射击
-    public float fireRate = 0.3f; //射速
-    public float autoFireRate = 0.6f; //自动射击的射速
+    public float fireRate = 0.2f; //射速
+    public float autoFireRate = 0.8f; //自动射击的射速
     public Transform autoFireTarget; //自动射击的目标 测试用
+    public Sprite autoCannonSprite;
+    public Sprite autoBarrelSprite;
+    public Sprite manualCannonSprite;
+    public Sprite manualBarrelSprite;
+    private bool isDragging = false; //是否正在拖动
+    private bool isHovering = false; //是否鼠标悬停在上面
     private float nextFireTime = 0f;
     private BulletPool bulletPool;
-
+    private float searchRadius = 7f; //搜索半径
     void Start() {
         bulletPool = GetComponent<BulletPool>();
+        UpdateSprite();
+        
     }
 
     void Update() {
         if(isAutoFire) {
-            AutoFire();
+            if (autoFireTarget != null) {
+                firePoint.transform.rotation = Quaternion.LookRotation(Vector3.forward,autoFireTarget.position - firePoint.position);
+                AutoFire();
+            } else {
+                SearchEnemy();
+            }
         } else {
+            if (isDragging) return;
+            if (isHovering) return;
+            firePoint.transform.rotation = Quaternion.LookRotation(Vector3.forward,Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position);
             ManualFire();
+        }
+    }
+
+    private void OnMouseDrag() {
+        isDragging = true;
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(transform.position.x,transform.position.y,0f);
+    }
+
+    private void OnMouseUp() {
+        isDragging = false;
+    }
+
+    private void OnMouseOver() {
+        isHovering = true;
+        if (Input.GetMouseButtonDown(1)) { //右键切换自动射击
+            ChangeAuto();
+        }
+    }
+    private void OnMouseExit() {
+        isHovering = false;
+    }
+
+    void ChangeAuto() {
+        isAutoFire = !isAutoFire;
+        UpdateSprite();
+    }
+
+    void UpdateSprite() {
+        if (isAutoFire) {
+            GetComponent<SpriteRenderer>().sprite = autoCannonSprite;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = autoBarrelSprite;
+        } else {
+            GetComponent<SpriteRenderer>().sprite = manualCannonSprite;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = manualBarrelSprite;
+        }
+    }
+
+    void SearchEnemy() {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(firePoint.position,searchRadius);
+        foreach (Collider2D collider in colliders) {
+            if (collider.CompareTag("EnemyObject")) {
+                autoFireTarget = collider.transform;
+                return; //找到一个敌人就返回
+            }
         }
     }
 
@@ -45,12 +106,14 @@ public class CannonController : MonoBehaviour
 
     void AutoShoot() {
         GameObject bullet = bulletPool.GetBullet();
-        bullet.transform.position = firePoint.position;
+        bullet.transform.position = firePoint.position + (firePoint.up * 1f);
         bullet.transform.rotation = firePoint.rotation;
+        
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) {
             Vector2 direction = autoFireTarget.position - firePoint.position;
             direction.Normalize();
+            rb.angularVelocity = 0f;
             rb.AddForce(direction * bulletSpeed,ForceMode2D.Impulse);
         }
         StartCoroutine(ReturnBulletAfterDelay(bullet,3f));
@@ -58,14 +121,14 @@ public class CannonController : MonoBehaviour
 
     void ToPointShoot() {
         GameObject bullet = bulletPool.GetBullet();
-        bullet.transform.position = firePoint.position;
+        bullet.transform.position = firePoint.position + (firePoint.up * 1f);
         bullet.transform.rotation = firePoint.rotation;
 
-        //在子弹prefab的rb2d里面调参数来设置子弹的重力之类的东西
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) {
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position;
             direction.Normalize();
+            rb.angularVelocity = 0f;
             rb.AddForce(direction * bulletSpeed,ForceMode2D.Impulse);
         }
         //等三秒回收子弹

@@ -4,12 +4,14 @@ using System.Collections.Generic;
 public class BulletPool : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject bulletContainer;
     public int poolSize = 15;
     private Queue<GameObject> bulletQueue = new Queue<GameObject>();
 
     //使用对象池存储子弹 避免频繁创建和销毁对象 导致大量消耗性能
     //没写子弹的伤害代码
     void Start() {
+        bulletContainer = GameObject.Find("BulletContainer");
         for (int i = 0;i < poolSize;i++) {
             GameObject bullet = NewBullet();
             bullet.SetActive(false);
@@ -39,7 +41,7 @@ public class BulletPool : MonoBehaviour
     //新建一个子弹
     public GameObject NewBullet() {
         GameObject newBullet = Instantiate(bulletPrefab);
-        newBullet.transform.parent = transform;
+        newBullet.transform.parent = bulletContainer.transform;
         newBullet.GetComponent<BulletController>().bulletPool = this; //设置子弹的对象池
         return newBullet;
     }
