@@ -119,6 +119,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &653951152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653951154}
+  - component: {fileID: 653951153}
+  m_Layer: 0
+  m_Name: UiManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &653951153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653951152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378424baeaeb9b0408b9e6bf2f6c5bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &653951154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653951152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.8357372, y: -0.35917214, z: -0.031777423}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &856059174
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +234,8 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -288,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1468707496959774074, guid: e1d85c4c4f14efd4c9b54e4fde96ea6d, type: 3}
-  poolSize: 30
+  poolSize: 15
 --- !u!114 &1107455370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1468707496959774074, guid: e1d85c4c4f14efd4c9b54e4fde96ea6d, type: 3}
-  poolSize: 30
+  poolSize: 15
 --- !u!114 &1348797760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1468707496959774074, guid: e1d85c4c4f14efd4c9b54e4fde96ea6d, type: 3}
-  poolSize: 30
+  poolSize: 15
 --- !u!114 &1688380316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +758,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 856059177}
+  - {fileID: 653951154}
   - {fileID: 1688380314}
   - {fileID: 1107455372}
   - {fileID: 1348797762}

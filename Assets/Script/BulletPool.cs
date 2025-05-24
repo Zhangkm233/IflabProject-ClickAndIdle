@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class BulletPool : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public int poolSize = 30;
+    public int poolSize = 15;
     private Queue<GameObject> bulletQueue = new Queue<GameObject>();
 
     //使用对象池存储子弹 避免频繁创建和销毁对象 导致大量消耗性能
