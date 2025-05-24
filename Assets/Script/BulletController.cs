@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public BulletPool bulletPool; //子弹池
+    public BulletPool bulletPool; 
     private double bulletDamage = 10;
+
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Enemy")) {
+        if (collision.gameObject.CompareTag("EnemyObject")) {
             EnemyObject enemy = collision.gameObject.GetComponent<EnemyObject>();
             if (enemy != null) {
                 enemy.getHurt(bulletDamage);
@@ -15,6 +16,6 @@ public class BulletController : MonoBehaviour
     }
 
     private void ReturnToPool() {
-        bulletPool.ReturnBullet(gameObject); //将子弹返回到池中
+        bulletPool.ReturnBullet(gameObject); 
     }
 }
