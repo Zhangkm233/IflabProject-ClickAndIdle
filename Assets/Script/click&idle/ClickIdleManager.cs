@@ -72,7 +72,9 @@ public class ClickIdleManager : MonoBehaviour
     public void SkipCountDown() {
         currentTime = 10;
     }
-
+    public void AddMoney() {
+        files += 100000f;
+    }
     void FixedUpdate()
     {
         diskBoom();

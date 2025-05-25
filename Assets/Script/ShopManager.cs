@@ -17,7 +17,7 @@ public class ShopManager : MonoBehaviour
     }
 
     public void HpUp() {
-        if (PlayerData.HpUpLevel < 0 && PlayerData.PlayerCoin < 30) {
+        if (PlayerData.HpUpLevel < 5 && PlayerData.PlayerCoin < 30) {
             PlayerData.HpUpLevel++;
             PlayerData.PlayerCoin -= 30;
             GameObject[] cannons = GameObject.FindGameObjectsWithTag("CannonObjects");

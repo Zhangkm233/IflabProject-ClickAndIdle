@@ -5,7 +5,6 @@ public class CannonController : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public float bulletSpeed = 15f;//弹速
-    //firepoint可以实现炮管之类的东西
     public Transform firePoint;
     public bool isAutoFire = false; //是否自动射击
     public float fireRate = 0.2f; //射速

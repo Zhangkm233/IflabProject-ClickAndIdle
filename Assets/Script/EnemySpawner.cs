@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("生成设置")]
     public GameObject enemyPrefab;
-    public float spawnRate = 0.5f;
+    public float spawnRate = 0.3f;
     public float spawnAreaWidth = 10f;
     public float spawnHeight = 5f;
     public int maxEnemies = 20;
@@ -48,23 +48,24 @@ public class EnemySpawner : MonoBehaviour
 
         float randomNum = Random.Range(minScale,maxScale);
         enemy.transform.localScale = new Vector3(randomNum,randomNum,1f);
-        enemy.GetComponent<EnemyObject>().SetEnemyHp(originHp * randomNum);
 
         //随机敌人类别
         int randomType = Random.Range(0,10);
         switch (randomType) {
-            case < 4:
+            case < 2:
                 enemy.GetComponent<EnemyObject>().SetType(EnemyObject.EnemyType.Archer);
                 EnemyMovement movement = enemy.AddComponent<EnemyMovement>();
                 movement.SetSpeed(originSpeed - originSpeed * (randomNum / maxScale) + 0.5f);
                 break;
-            case >= 4:
+            case >= 2:
                 enemy.GetComponent<EnemyObject>().SetType(EnemyObject.EnemyType.Normal);
                 //设置速度
                 movement = enemy.AddComponent<EnemyMovement>();
                 movement.SetSpeed(originSpeed - originSpeed * (randomNum / maxScale) + 0.5f);
                 break;
         }
+
+        enemy.GetComponent<EnemyObject>().SetEnemyHp(originHp * randomNum);
 
         if (randomNum < 0.3f) {
             //对应大小设置sprite

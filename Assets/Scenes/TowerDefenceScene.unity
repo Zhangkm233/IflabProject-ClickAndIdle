@@ -1346,6 +1346,7 @@ MonoBehaviour:
   moneyText: {fileID: 1477109351}
   CannonObject: {fileID: 3532273313222886911, guid: 4723f300c7404144d8cb4e5a99de62e9, type: 3}
   enemySpawner: {fileID: 422913399}
+  shop: {fileID: 1872736480}
 --- !u!1 &662515945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,7 +1429,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536250390}
   m_HandleRect: {fileID: 1536250389}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.99999964
   m_Size: 0.7052505
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1833,7 +1834,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 315, y: 296}
+  m_AnchoredPosition: {x: 566, y: 482}
   m_SizeDelta: {x: 528.85913, y: 396.658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &907247627
@@ -1927,7 +1928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introduce: {fileID: 1054119744}
-  tooltipContent: "\u8D2D\u4E70\u65B0\u7684\u70AE\u53F0"
+  tooltipContent: "\u8D2D\u4E70\u65B0\u7684\u70AE\u53F0 \u552E\u4EF7100"
 --- !u!114 &997897012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2190,7 +2191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introduce: {fileID: 1054119744}
-  tooltipContent: "\u70AE\u53F0\u8840\u91CF\u63D0\u5347"
+  tooltipContent: "\u70AE\u53F0\u8840\u91CF\u63D0\u5347 \u552E\u4EF750 \u5E93\u5B585"
 --- !u!114 &1213866029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3228,8 +3229,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -439, y: 355}
-  m_SizeDelta: {x: 776.3896, y: 512.3312}
+  m_AnchoredPosition: {x: -571, y: 505}
+  m_SizeDelta: {x: 781.6714, y: 538.3153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850672871
 MonoBehaviour:

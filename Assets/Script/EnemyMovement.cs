@@ -1,5 +1,5 @@
 using UnityEngine;
-using System;
+using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -7,30 +7,30 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 moveDirection = Vector2.down;
     private GameObject[] cannons;
 
+
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
     }
 
     void Update() {
-        // 向下移动
         transform.Translate(moveDirection * speed * Time.deltaTime);
 
-        // 如果移出屏幕底部，销毁对象
-        if (transform.position.y < -Camera.main.orthographicSize - 1f)
-        {
-            this.GetComponent<EnemyObject>().DestroySelf();
+        if (transform.position.y < -Camera.main.orthographicSize - 1f) {
 
-            cannons = GameObject.FindGameObjectsWithTag("CannonObject");
-            
-            System.Random random = new System.Random();
-            GameObject randomCannon = cannons[random.Next(0, cannons.Length)];
-
-            float health = randomCannon.GetComponent<CannonController>().cannonHp;
-            if (health != null)
+            //System.Random random = new System.Random();
+            GameObject[] cannons = GameObject.FindGameObjectsWithTag("CannonObject");
+            float randomNum = Random.Range(0,cannons.Length);
+            GameObject randomCannon = cannons[(int)randomNum];
+            Debug.Log("Random Cannon: " + randomCannon.name);
+            //float health = randomCannon.GetComponent<CannonController>().cannonHp;
+            if (randomCannon != null)
             {
-                health -= random.Next(1, 10);
+                Debug.Log("hit");
+                randomCannon.GetComponent<CannonController>().cannonHp -= Random.Range(10f,25f);
             }
+
+            this.GetComponent<EnemyObject>().DestroySelf();
         }
     }
 }

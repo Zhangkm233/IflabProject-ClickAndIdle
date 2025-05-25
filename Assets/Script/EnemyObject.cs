@@ -38,6 +38,10 @@ public class EnemyObject : MonoBehaviour
     {
         maxHp = hp;
         currentHp = hp;
+        if(enemyType == EnemyType.Archer) {
+            maxHp *= 2;
+            currentHp *= 2;
+        }
     }
 
     public void SetType(EnemyType type) {
