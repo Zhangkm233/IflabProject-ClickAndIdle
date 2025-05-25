@@ -781,7 +781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &460730945
 RectTransform:
   m_ObjectHideFlags: 0
@@ -929,7 +929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &571733109
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1069,6 +1069,7 @@ GameObject:
   - component: {fileID: 653951154}
   - component: {fileID: 653951153}
   - component: {fileID: 653951155}
+  - component: {fileID: 653951156}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -1116,6 +1117,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopCanvas: {fileID: 1872736477}
+--- !u!114 &653951156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653951152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64df637c6a284241a7c5f113a69777c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 1477109351}
+  CannonObject: {fileID: 3532273313222886911, guid: 4723f300c7404144d8cb4e5a99de62e9, type: 3}
+  enemySpawner: {fileID: 422913399}
 --- !u!1 &662515945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,7 +1713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introduce: {fileID: 1054119744}
-  tooltipContent: "\u81EA\u52A8\u83B7\u53D6\u6587\u4EF6"
+  tooltipContent: "\u8D2D\u4E70\u65B0\u7684\u70AE\u53F0"
 --- !u!114 &997897012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1742,10 +1758,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 653951152}
-        m_TargetAssemblyTypeName: ClickIdleEvent, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 653951156}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: NewCannon
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1960,7 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introduce: {fileID: 1054119744}
-  tooltipContent: "\u5347\u7EA7\u5355\u6B21\u70B9\u51FB\u83B7\u53D6\u6587\u4EF6\u80FD\u529B"
+  tooltipContent: "\u70AE\u53F0\u8840\u91CF\u63D0\u5347"
 --- !u!114 &1213866029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,10 +2021,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 653951152}
-        m_TargetAssemblyTypeName: ClickIdleEvent, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 653951156}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: HpUp
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2153,7 +2169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1306160631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2316,7 +2332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 506, y: 126}
+  m_AnchoredPosition: {x: 462, y: 130}
   m_SizeDelta: {x: 229.7612, y: 43.0802}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1477109351
@@ -2751,7 +2767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1741931892
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3297,7 +3313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1900019155
 RectTransform:
   m_ObjectHideFlags: 0

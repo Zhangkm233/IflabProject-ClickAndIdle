@@ -5,14 +5,16 @@ public class ShopManager : MonoBehaviour
 {
     public Text moneyText;
     public GameObject CannonObject;
+    public GameObject enemySpawner;
     private void Update() {
         moneyText.text = PlayerData.PlayerCoin.ToString();
     }
     public void ExitShop() {
         PlayerData.CurrentGameState = PlayerData.GameState.Playing;
         gameObject.SetActive(false);
+        enemySpawner.GetComponent<EnemySpawner>().StartSpawn();
     }
-    
+
     public void HpUp() {
         if (PlayerData.HpUpLevel < 0 && PlayerData.PlayerCoin < 30) {
             PlayerData.HpUpLevel++;
@@ -33,7 +35,7 @@ public class ShopManager : MonoBehaviour
             return;
         }
         PlayerData.PlayerCoin -= 100;
-        GameObject newCannon = Instantiate(Resources.Load<GameObject>("Prefabs/CannonPrefab"));
+        GameObject newCannon = Instantiate(CannonObject);
         newCannon.transform.position = new Vector3(0,0,0); //设置新炮的位置
-        Debug.Log("New cannon purchased and instantiated.");
     }
+}
