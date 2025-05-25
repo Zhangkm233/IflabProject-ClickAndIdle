@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 8293016790186104141}
   m_Layer: 7
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: CannonObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,6 +205,7 @@ MonoBehaviour:
   autoBarrelSprite: {fileID: 2261564988837380925, guid: efce4f5589da4974d92dbfa3cecbb3c3, type: 3}
   manualCannonSprite: {fileID: -3262125244774946446, guid: fbeebf11dba29364e8dede55f7cb7aac, type: 3}
   manualBarrelSprite: {fileID: -5950619860096908347, guid: 2f8aff8eb458a214ca0cbcf68a02c8a1, type: 3}
+  cannonHp: 100
 --- !u!114 &7155190026915639504
 MonoBehaviour:
   m_ObjectHideFlags: 0

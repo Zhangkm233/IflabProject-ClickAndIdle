@@ -139,9 +139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fdebc856ac80047a5938442f226c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   smallEnemy: {fileID: 3090424721264272782, guid: 9f4a59105788fca43856cf52c4907a0c, type: 3}
   midEnemy: {fileID: -9041175130582231242, guid: 4e14fe6051eae684da0e9d6d711e573f, type: 3}
   bigEnemy: {fileID: 4477724565261458817, guid: cfb7bef84ab3bdd45babdcda4b579000, type: 3}
+  smallEnemy2: {fileID: 3090424721264272782, guid: 9f4a59105788fca43856cf52c4907a0c, type: 3}
+  midEnemy2: {fileID: -9041175130582231242, guid: 4e14fe6051eae684da0e9d6d711e573f, type: 3}
+  bigEnemy2: {fileID: 4477724565261458817, guid: cfb7bef84ab3bdd45babdcda4b579000, type: 3}
   HPBAR: {fileID: 1073973286892200036}
 --- !u!1 &713494992872842980
 GameObject:
