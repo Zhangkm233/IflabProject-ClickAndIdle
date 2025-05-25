@@ -60,6 +60,9 @@ public class CannonController : MonoBehaviour
             firePoint.transform.rotation = Quaternion.LookRotation(Vector3.forward, Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position);
             ManualFire();
         }
+        if (cannonHp <= 0) {
+            Destroy(gameObject);
+        }
     }
 
     private void OnMouseDrag() {
