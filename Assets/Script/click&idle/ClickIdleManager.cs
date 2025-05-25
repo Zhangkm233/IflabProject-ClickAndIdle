@@ -69,6 +69,9 @@ public class ClickIdleManager : MonoBehaviour
             SceneManager.LoadScene("TowerDefenceScene");
         }
     }
+    public void SkipCountDown() {
+        currentTime = 10;
+    }
 
     void FixedUpdate()
     {

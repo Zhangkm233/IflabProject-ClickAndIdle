@@ -7,7 +7,7 @@ public class ShopManager : MonoBehaviour
     public GameObject CannonObject;
     public GameObject enemySpawner;
     private void Update() {
-        moneyText.text = PlayerData.PlayerCoin.ToString();
+        moneyText.text = "Money:" + PlayerData.PlayerCoin.ToString();
     }
     public void ExitShop() {
         PlayerData.CurrentGameState = PlayerData.GameState.Playing;
