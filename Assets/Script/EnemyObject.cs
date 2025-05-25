@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyObject : MonoBehaviour
 {
-    private double enemyHp = 50;
+    private double maxHp = 50;
+    private double currentHp = 50;
     public enum EnemyType
     {
         Normal,
@@ -20,8 +22,19 @@ public class EnemyObject : MonoBehaviour
     public Sprite midEnemy;
     public Sprite bigEnemy;
 
-    public void SetEnemyHp(double hp) {
-        enemyHp = hp;
+    public Image HPBAR;
+
+    void Update()
+    {
+        float percent = - (float)(0.585 * (1-(currentHp / maxHp)));
+        RectTransform rt = HPBAR.GetComponent<RectTransform>();
+        rt.offsetMax = new Vector2(percent, rt.offsetMax.y);
+    }
+
+    public void SetEnemyHp(double hp)
+    {
+        maxHp = hp;
+        currentHp = hp;
     }
 
     public void SetType(EnemyType type) {
@@ -36,9 +49,10 @@ public class EnemyObject : MonoBehaviour
             _ => smallEnemy // 默认使用小型敌人
         };
     }
+    
     public void getHurt(double damage) {
-        enemyHp -= damage;
-        if (enemyHp <= 0) {
+        currentHp -= damage;
+        if (currentHp <= 0) {
             DestroySelf();
         }
     }
@@ -46,5 +60,14 @@ public class EnemyObject : MonoBehaviour
     public void DestroySelf() {
         PlayerData.currentEnemyCount--;
         Destroy(gameObject);
+    }
+    
+    public double GetCurrentHealth()
+    {
+        return currentHp;
+    }
+    
+    public double GetMaxHealth() {
+        return maxHp;
     }
 }
