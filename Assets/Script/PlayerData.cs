@@ -13,5 +13,7 @@ public static class PlayerData
         Shopping,
         Pause
     }
-    public static GameState CurrentGameState = GameState.Shopping; 
+    public static GameState CurrentGameState = GameState.Shopping;
+
+    public static int HpUpLevel = 0;
 }
