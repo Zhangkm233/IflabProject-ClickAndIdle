@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 using System;
 using JetBrains.Annotations;
+using UnityEngine.SceneManagement;
 public class UiManager : MonoBehaviour
 {
     //有bug，我不知道怎么修
@@ -42,7 +43,13 @@ public class UiManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void Start() {
+    public static void GameStart()
+    {
+        SceneManager.LoadScene("ClickIdle");
+    }
+
+    public void Start()
+    {
         //MessageBox(IntPtr.Zero,"Hello World","Hello",0);
 #if !UNITY_EDITOR
         hWnd = GetActiveWindow();
