@@ -1115,6 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41251e9480d83743865f8e2fe0d47b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopCanvas: {fileID: 1872736477}
 --- !u!1 &662515945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,10 +2815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176d98e0f551afc4281e54719b23adb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragging: 0
-  offset: {x: 0, y: 0, z: 0}
-  originalPosition: {x: 0, y: 0, z: 0}
-  mainCamera: {fileID: 0}
 --- !u!61 &1850672874
 BoxCollider2D:
   m_ObjectHideFlags: 0

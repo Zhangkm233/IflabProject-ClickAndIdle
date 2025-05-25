@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 public class CannonController : MonoBehaviour
 {
@@ -20,25 +21,43 @@ public class CannonController : MonoBehaviour
     private BulletPool bulletPool;
     private float searchRadius = 7f; //搜索半径
     public float cannonHp = 100f; //大炮血量
+    public float maxHp;
+    public Image HPBAR;
     void Start() {
         bulletPool = GetComponent<BulletPool>();
         UpdateSprite();
+        maxHp = cannonHp;
         
+        float percent = - (float)(1.315 * (1-(cannonHp / maxHp)));
+        RectTransform rt = HPBAR.GetComponent<RectTransform>();
+        rt.offsetMax = new Vector2(percent, rt.offsetMax.y);
     }
 
-    void Update() {
-        if(PlayerData.CurrentGameState != PlayerData.GameState.Playing) return;
-        if (isAutoFire) {
-            if (autoFireTarget != null) {
-                firePoint.transform.rotation = Quaternion.LookRotation(Vector3.forward,autoFireTarget.position - firePoint.position);
+    void Update()
+    {
+        
+        float percent = - (float)(1.315 * (1-(cannonHp / maxHp)));
+        RectTransform rt = HPBAR.GetComponent<RectTransform>();
+        rt.offsetMax = new Vector2(percent, rt.offsetMax.y);
+
+        if (PlayerData.CurrentGameState != PlayerData.GameState.Playing) return;
+        if (isAutoFire)
+        {
+            if (autoFireTarget != null)
+            {
+                firePoint.transform.rotation = Quaternion.LookRotation(Vector3.forward, autoFireTarget.position - firePoint.position);
                 AutoFire();
-            } else {
+            }
+            else
+            {
                 SearchEnemy();
             }
-        } else {
+        }
+        else
+        {
             if (isDragging) return;
             if (isHovering) return;
-            firePoint.transform.rotation = Quaternion.LookRotation(Vector3.forward,Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position);
+            firePoint.transform.rotation = Quaternion.LookRotation(Vector3.forward, Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position);
             ManualFire();
         }
     }
