@@ -19,16 +19,22 @@ public class EnemySpawner : MonoBehaviour
     public float originSpeed = 3f;
 
     void Start() {
+        
+    }
+
+    public void StartSpawn() {
         StartCoroutine(SpawnEnemies());
     }
 
-    IEnumerator SpawnEnemies() {
-        while (true && PlayerData.CurrentGameState == PlayerData.GameState.Playing) {
-            if (PlayerData.currentEnemyCount < maxEnemies) {
-                SpawnEnemy();
-                yield return new WaitForSeconds(spawnRate);
-            } else {
-                yield return null;
+    public IEnumerator SpawnEnemies() {
+        while (true) {
+            if (PlayerData.CurrentGameState == PlayerData.GameState.Playing) {
+                if (PlayerData.currentEnemyCount < maxEnemies) {
+                    SpawnEnemy();
+                    yield return new WaitForSeconds(spawnRate);
+                } else {
+                    yield return null;
+                }
             }
         }
     }
