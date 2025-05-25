@@ -119,17 +119,26 @@ public class CannonController : MonoBehaviour
         StartCoroutine(ReturnBulletAfterDelay(bullet,3f));
     }
 
+    [System.Obsolete]
     void ToPointShoot() {
         GameObject bullet = bulletPool.GetBullet();
         bullet.transform.position = firePoint.position + (firePoint.up * 1f);
-        bullet.transform.rotation = firePoint.rotation;
+
+        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position;
+        direction.Normalize();
+
+        // 设置子弹朝向射击方向
+        bullet.transform.right = direction;
+        bullet.transform.Rotate(0,0,-90f);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) {
-            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position;
-            direction.Normalize();
             rb.angularVelocity = 0f;
-            rb.AddForce(direction * bulletSpeed,ForceMode2D.Impulse);
+            rb.velocity = Vector2.zero; // 清除可能存在的初始速度
+            rb.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
+            
+            // 可选：锁定旋转
+            rb.freezeRotation = true;
         }
         //等三秒回收子弹
         //装备回收 交易自由
