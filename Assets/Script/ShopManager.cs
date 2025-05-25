@@ -6,12 +6,13 @@ public class ShopManager : MonoBehaviour
     public Text moneyText;
     public GameObject CannonObject;
     public GameObject enemySpawner;
+    public Canvas shop;
     private void Update() {
         moneyText.text = "Money:" + PlayerData.PlayerCoin.ToString();
     }
     public void ExitShop() {
         PlayerData.CurrentGameState = PlayerData.GameState.Playing;
-        gameObject.SetActive(false);
+        shop.gameObject.SetActive(false);
         enemySpawner.GetComponent<EnemySpawner>().StartSpawn();
     }
 
