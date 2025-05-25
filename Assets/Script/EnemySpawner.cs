@@ -15,8 +15,8 @@ public class EnemySpawner : MonoBehaviour
     public float maxSpeed = 3f;
     public float minScale = 0.2f;
     public float maxScale = 0.5f;
-    public float originSpeed = 3f;
     public float originHp = 150f;
+    public float originSpeed = 3f;
 
     void Start() {
         StartCoroutine(SpawnEnemies());
@@ -34,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void SpawnEnemy() {
+        //随机敌人位置 大小 和血量
         float randomX = Random.Range(-spawnAreaWidth / 2f,spawnAreaWidth / 2f);
         Vector3 spawnPosition = new Vector3(randomX,spawnHeight,0f);
         GameObject enemy = Instantiate(enemyPrefab,spawnPosition,Quaternion.identity);
@@ -41,16 +42,32 @@ public class EnemySpawner : MonoBehaviour
 
         float randomNum = Random.Range(minScale,maxScale);
         enemy.transform.localScale = new Vector3(randomNum,randomNum,1f);
-        EnemyMovement movement = enemy.AddComponent<EnemyMovement>();
-        movement.SetSpeed(originSpeed - originSpeed * (randomNum/maxScale) + 0.5f);
         enemy.GetComponent<EnemyObject>().SetEnemyHp(originHp * randomNum);
 
-        if(randomNum < 0.3f) {
+        //随机敌人类别
+        int randomType = Random.Range(0,10);
+        switch (randomType) {
+            case < 4:
+                enemy.GetComponent<EnemyObject>().SetType(EnemyObject.EnemyType.Archer);
+                EnemyMovement movement = enemy.AddComponent<EnemyMovement>();
+                movement.SetSpeed(originSpeed - originSpeed * (randomNum / maxScale) + 0.5f);
+                break;
+            case >= 4:
+                enemy.GetComponent<EnemyObject>().SetType(EnemyObject.EnemyType.Normal);
+                //设置速度
+                movement = enemy.AddComponent<EnemyMovement>();
+                movement.SetSpeed(originSpeed - originSpeed * (randomNum / maxScale) + 0.5f);
+                break;
+        }
+
+        if (randomNum < 0.3f) {
+            //对应大小设置sprite
             enemy.GetComponent<EnemyObject>().SetEnemySprite("small");
         } else if (randomNum < 0.4f) {
             enemy.GetComponent<EnemyObject>().SetEnemySprite("mid");
         } else {
             enemy.GetComponent<EnemyObject>().SetEnemySprite("big");
         }
+        
     }
 }
