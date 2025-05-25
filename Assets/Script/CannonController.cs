@@ -19,6 +19,7 @@ public class CannonController : MonoBehaviour
     private float nextFireTime = 0f;
     private BulletPool bulletPool;
     private float searchRadius = 7f; //搜索半径
+    public float cannonHp = 100f; //大炮血量
     void Start() {
         bulletPool = GetComponent<BulletPool>();
         UpdateSprite();
@@ -26,7 +27,8 @@ public class CannonController : MonoBehaviour
     }
 
     void Update() {
-        if(isAutoFire) {
+        if(PlayerData.CurrentGameState != PlayerData.GameState.Playing) return;
+        if (isAutoFire) {
             if (autoFireTarget != null) {
                 firePoint.transform.rotation = Quaternion.LookRotation(Vector3.forward,autoFireTarget.position - firePoint.position);
                 AutoFire();

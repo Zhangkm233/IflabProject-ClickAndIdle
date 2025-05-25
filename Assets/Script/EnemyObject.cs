@@ -16,11 +16,14 @@ public class EnemyObject : MonoBehaviour
         Mid,
         Big
     }
-    private EnemyType enemyType = EnemyType.Normal;
+    public EnemyType enemyType = EnemyType.Normal;
     private EnemyScale enemyScale = EnemyScale.Small;
     public Sprite smallEnemy;
     public Sprite midEnemy;
     public Sprite bigEnemy;
+    public Sprite smallEnemy2;
+    public Sprite midEnemy2;
+    public Sprite bigEnemy2;
 
     public Image HPBAR;
 
@@ -41,13 +44,22 @@ public class EnemyObject : MonoBehaviour
         enemyType = type;
     }
 
-    public void SetEnemySprite(string enemyType) {
-        GetComponent<SpriteRenderer>().sprite = enemyType switch {
-            "small" => smallEnemy,
-            "mid" => midEnemy,
-            "big" => bigEnemy,
-            _ => smallEnemy // 默认使用小型敌人
-        };
+    public void SetEnemySprite(string Type) {
+        if(enemyType == EnemyType.Archer) {
+            GetComponent<SpriteRenderer>().sprite = Type switch {
+                "small" => smallEnemy2,
+                "mid" => midEnemy2,
+                "big" => bigEnemy2,
+                _ => smallEnemy // 默认使用小型敌人
+            };
+        } else {
+            GetComponent<SpriteRenderer>().sprite = Type switch {
+                "small" => smallEnemy,
+                "mid" => midEnemy,
+                "big" => bigEnemy,
+                _ => smallEnemy // 默认使用小型敌人
+            };
+        }
     }
     
     public void getHurt(double damage) {

@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     IEnumerator SpawnEnemies() {
-        while (true) {
+        while (true && PlayerData.CurrentGameState == PlayerData.GameState.Playing) {
             if (PlayerData.currentEnemyCount < maxEnemies) {
                 SpawnEnemy();
                 yield return new WaitForSeconds(spawnRate);

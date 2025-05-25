@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
         // 如果移出屏幕底部，销毁对象
         if (transform.position.y < -Camera.main.orthographicSize - 1f) {
+
             this.GetComponent<EnemyObject>().DestroySelf();
         }
     }

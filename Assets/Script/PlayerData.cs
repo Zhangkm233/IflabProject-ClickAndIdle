@@ -7,4 +7,11 @@ public static class PlayerData
     public static double PlayerHp;
 
     public static int currentEnemyCount; //当前敌人数量
+    public enum GameState
+    {
+        Playing,
+        Shopping,
+        Pause
+    }
+    public static GameState CurrentGameState = GameState.Shopping; 
 }

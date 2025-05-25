@@ -64,6 +64,8 @@ public class ClickIdleManager : MonoBehaviour
 
         if (currentTime <= 0)
         {
+            PlayerData.PlayerCoin = (int)files;
+            PlayerData.CurrentGameState = PlayerData.GameState.Shopping;
             SceneManager.LoadScene("TowerDefenceScene");
         }
     }
